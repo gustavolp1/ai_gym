@@ -1,4 +1,4 @@
-from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
+from aigyminsper.search.SearchAlgorithms import BuscaLargura, BuscaProfundidade
 from aigyminsper.search.Graph import State
 
 class AspiradorPo2x1(State):
@@ -47,14 +47,14 @@ class AspiradorPo2x1(State):
         # - para o problema do soma 1 e 2: return str(self.number)
         # - para o problema das cidades: return self.city
         #
-        None
+        return f'Action: {self.operator}\nVacuum cleaner position: {self.pos}\nLeft state: {self.leftstate}\nRight state: {self.rightstate}\nEtapa'
 
 
 def main():
     print('\nIterative Deepening Depth-First Search: Simple Vacuum Cleaner 2x1 Agent\n')
-    state = AspiradorPo2x1("start", "r", "dirty", "clean")
-    algorithm = BuscaProfundidadeIterativa()
-    result = algorithm.search(state)
+    state = AspiradorPo2x1("start", "r", "dirty", "dirty")
+    algorithm = BuscaProfundidade()
+    result = algorithm.search(state, m=3, trace=True)
     if result != None:
         print('Solution found!\n')
         print(f"Path: {result.show_path()}\n")
