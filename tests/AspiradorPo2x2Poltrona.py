@@ -83,7 +83,7 @@ class AspiradorPo2x2Poltrona(State):
 
 def main():
     print('\nIterative Deepening Depth-First Search: Simple Vacuum Cleaner 2x2 Agent that accounts for couches\n')
-    state = AspiradorPo2x2Poltrona("start", "u", "couch-dirty", "dirty", "flipped-clean", "dirty")
+    state = AspiradorPo2x2Poltrona("start", "u", "couch-dirty", "dirty", "clean", "dirty")
 
     algorithm = BuscaLargura()
     start_time = time()
