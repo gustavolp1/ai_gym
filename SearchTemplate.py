@@ -46,7 +46,7 @@ def main():
     algchoice = None
     depth = None
     while algchoice != '1' and algchoice != '2' and algchoice != '3' and algchoice != '4':
-        algchoice = input('\nChoose an algorithm!\n1. BFS (Breadth-First Search)\n2. DFS (Depth-First Search)\n3. IDDFS (Iterative Deepening Depth-First Search)\n4. UCS (Uniform Cost Search)\nYour choice: ')
+        algchoice = input('\nChoose an algorithm! (Type its number.)\n1. BFS (Breadth-First Search)\n2. DFS (Depth-First Search)\n3. IDDFS (Iterative Deepening Depth-First Search)\n4. UCS (Uniform Cost Search)\nYour choice: ')
         if algchoice == '1':
             algorithm = BuscaLargura()
             print('\nBFS chosen!')
