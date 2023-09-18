@@ -1,0 +1,17 @@
+Busca em Largura:
+Espaço:
+Tempo:
+Completo: sim
+Ótimo: sim (para problemas de custo uniforme)
+
+Busca em Profundidade:
+Espaço: 
+Tempo: 
+Completo: não
+Ótimo: não
+
+Busca em Profundidade Iterativa:
+Espaço:
+Tempo:
+Completo: 
+Ótimo: 
