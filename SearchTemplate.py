@@ -2,6 +2,7 @@ from aigyminsper.search.SearchAlgorithms import BuscaLargura
 from aigyminsper.search.SearchAlgorithms import BuscaProfundidade
 from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
 from aigyminsper.search.SearchAlgorithms import BuscaCustoUniforme
+from aigyminsper.search.SearchAlgorithms import BuscaGananciosa
 from aigyminsper.search.Graph import State
 from datetime import datetime
 
@@ -45,8 +46,8 @@ def main():
 
     algchoice = None
     depth = None
-    while algchoice != '1' and algchoice != '2' and algchoice != '3' and algchoice != '4':
-        algchoice = input('\nChoose an algorithm! (Type its number.)\n1. BFS (Breadth-First Search)\n2. DFS (Depth-First Search)\n3. IDDFS (Iterative Deepening Depth-First Search)\n4. UCS (Uniform Cost Search)\nYour choice: ')
+    while algchoice != '1' and algchoice != '2' and algchoice != '3' and algchoice != '4' and algchoice != '5':
+        algchoice = input('\nChoose an algorithm! (Type its number.)\n1. BFS (Breadth-First Search)\n2. DFS (Depth-First Search)\n3. IDDFS (Iterative Deepening Depth-First Search)\n4. UCS (Uniform Cost Search)\n5. GS (Greedy Search)\nYour choice: ')
         if algchoice == '1':
             algorithm = BuscaLargura()
             print('\nBFS chosen!')
@@ -59,6 +60,9 @@ def main():
             print('\nIDDFS chosen!')
         elif algchoice == '4':
             algorithm = BuscaCustoUniforme()
+            print('\nUCS chosen!')
+        elif algchoice == '5':
+            algorithm = BuscaGananciosa()
             print('\nUCS chosen!')
         else:
             print('\nInvalid choice. Try again.')

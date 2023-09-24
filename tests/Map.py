@@ -3,8 +3,10 @@ from aigyminsper.search.SearchAlgorithms import BuscaProfundidade
 from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
 from aigyminsper.search.SearchAlgorithms import BuscaCustoUniforme
 from aigyminsper.search.SearchAlgorithms import BuscaGananciosa
+from aigyminsper.search.SearchAlgorithms import AEstrela
 from aigyminsper.search.Graph import State
 from datetime import datetime
+import pandas as pd
 
 @staticmethod
 def createArea():
@@ -26,6 +28,21 @@ def createArea():
         'p':[(2,'c')],
         'x':[(1,'m')]
     }
+@staticmethod
+def createHeuristics():
+    df = pd.read_csv("MapHeuristics.csv", sep=",")
+    data_dict = {}
+    for index, row in df.iterrows():
+        key = row.iloc[1]
+        inner_dict = {row.iloc[0]: row.iloc[2]}
+        if key in data_dict:
+            data_dict[key].update(inner_dict)
+        else:
+            data_dict[key] = inner_dict
+    return data_dict
+
+area_ = createArea()
+heuristics_ = createHeuristics()
 
 class Map(State):
 
@@ -34,7 +51,8 @@ class Map(State):
         self.pos = pos
         self.goal = goal
         self.cost_ = cost_
-        self.area = createArea()
+        self.area = area_
+        self.heuristics = heuristics_
 
     def successors(self):
         successors = []
@@ -56,16 +74,23 @@ class Map(State):
     def env(self):
         return f'Current state: {self.pos}; Cost: {self.cost()}'
     
+    def h(self):
+        if self.goal in self.heuristics.keys():
+            return self.heuristics[self.goal][self.pos]
+            #return self.heuristics[self.goal][self.pos]
+            #return 1
+        else:
+            return 0
 
 def main():
 
-    algorithm = BuscaCustoUniforme()
+    algorithm = AEstrela()
     state = Map('b', 'b', 'o', 0)
 
     print('\nSearching...')
 
     start_time = datetime.now()
-    result = algorithm.search(state, trace=False) # Use trace=True to see the trace; pruning argument can be set to 'without', 'father-son' or 'general'.
+    result = algorithm.search(state, trace=False) # Use trace=True to see the trace; pruning argument may be set to 'without', 'father-son' or 'general'.
     end_time = datetime.now()
 
     if result != None:
