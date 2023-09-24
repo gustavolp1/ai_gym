@@ -77,8 +77,6 @@ class Map(State):
     def h(self):
         if self.goal in self.heuristics.keys():
             return self.heuristics[self.goal][self.pos]
-            #return self.heuristics[self.goal][self.pos]
-            #return 1
         else:
             return 0
 
