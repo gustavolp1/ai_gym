@@ -1,8 +1,4 @@
-from aigyminsper.search.SearchAlgorithms import BuscaLargura
-from aigyminsper.search.SearchAlgorithms import BuscaProfundidade
-from aigyminsper.search.SearchAlgorithms import BuscaProfundidadeIterativa
-from aigyminsper.search.SearchAlgorithms import BuscaCustoUniforme
-from aigyminsper.search.SearchAlgorithms import BuscaGananciosa
+from aigyminsper.search.SearchAlgorithms import BuscaLargura, BuscaProfundidade, BuscaProfundidadeIterativa, BuscaCustoUniforme, BuscaGananciosa
 from aigyminsper.search.Graph import State
 from datetime import datetime
 

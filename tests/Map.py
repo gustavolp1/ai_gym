@@ -82,13 +82,13 @@ class Map(State):
 
 def main():
 
-    algorithm = AEstrela()
+    algorithm = BuscaCustoUniforme()
     state = Map('b', 'b', 'o', 0)
 
     print('\nSearching...')
 
     start_time = datetime.now()
-    result = algorithm.search(state, trace=False) # Use trace=True to see the trace; pruning argument may be set to 'without', 'father-son' or 'general'.
+    result = algorithm.search(state, trace=True) # Use trace=True to see the trace; pruning argument may be set to 'without', 'father-son' or 'general'.
     end_time = datetime.now()
 
     if result != None:
